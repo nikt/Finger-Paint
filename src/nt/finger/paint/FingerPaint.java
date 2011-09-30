@@ -1,6 +1,7 @@
 package nt.finger.paint;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,6 +22,7 @@ public class FingerPaint extends Activity {
         
         drawView = new DrawView(this);
         setContentView(drawView);
+        drawView.setBackgroundColor(Color.BLACK);
         drawView.requestFocus();
     }
     
@@ -39,42 +41,77 @@ public class FingerPaint extends Activity {
     		drawView.clearPoints();
     		return true;
     	}
-    	case R.id.change_colour_id : {
-    		return true;
-    	}
-    	case R.id.white_id : {
+    	case R.id.p_white_id : {
     		drawView.changeColour(0);
     		return true;
     	}
-    	case R.id.blue_id : {
+    	case R.id.p_blue_id : {
     		drawView.changeColour(1);
     		return true;
     	}
-    	case R.id.cyan_id : {
+    	case R.id.p_lblue_id : {
     		drawView.changeColour(2);
     		return true;
     	}
-    	case R.id.green_id : {
+    	case R.id.p_green_id : {
     		drawView.changeColour(3);
     		return true;
     	}
-    	case R.id.magenta_id : {
+    	case R.id.p_pink_id : {
     		drawView.changeColour(4);
     		return true;
     	}
-    	case R.id.red_id : {
+    	case R.id.p_red_id : {
     		drawView.changeColour(5);
     		return true;
     	}
-    	case R.id.yellow_id : {
+    	case R.id.p_yellow_id : {
     		drawView.changeColour(6);
     		return true;
     	}
-    	case R.id.random_id : {
+    	case R.id.p_black_id : {
+    		drawView.changeColour(7);
+    		return true;
+    	}
+    	case R.id.p_random_id : {
     		drawView.changeColour(-1);
     		return true;
     	}
-    	default : return true;
+    	case R.id.b_white_id : {
+    		drawView.setBackgroundColor(Color.WHITE);
+    		return true;
+    	}
+    	case R.id.b_blue_id : {
+    		drawView.setBackgroundColor(Color.BLUE);
+    		return true;
+    	}
+    	case R.id.b_lblue_id : {
+    		drawView.setBackgroundColor(Color.CYAN);
+    		return true;
+    	}
+    	case R.id.b_green_id : {
+    		drawView.setBackgroundColor(Color.GREEN);
+    		return true;
+    	}
+    	case R.id.b_pink_id : {
+    		drawView.setBackgroundColor(Color.MAGENTA);
+    		return true;
+    	}
+    	case R.id.b_red_id : {
+    		drawView.setBackgroundColor(Color.RED);
+    		return true;
+    	}
+    	case R.id.b_yellow_id : {
+    		drawView.setBackgroundColor(Color.YELLOW);
+    		return true;
+    	}
+    	case R.id.b_black_id : {
+    		drawView.setBackgroundColor(Color.BLACK);
+    		return true;
+    	}
+    	default : {
+    		return true;
+    	}
     	}
     }
 }

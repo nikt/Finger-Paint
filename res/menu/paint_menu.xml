@@ -2,17 +2,30 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/clear_id" android:titleCondensed="Clear" android:title="Clear">
     	  android:title="@string/clear"</item>
-    <item android:id="@+id/change_colour_id" android:titleCondensed="Colour" android:title="Change Colour">
+    <item android:titleCondensed="Paint" android:title="Change Paint" android:id="@+id/change_paint_id">
         <menu>
-            <item android:title="White" android:titleCondensed="White" android:id="@+id/white_id"></item>
-            <item android:title="Blue" android:titleCondensed="Blue" android:id="@+id/blue_id"></item>
+            <item android:title="White" android:titleCondensed="White" android:id="@+id/p_white_id"></item>
+            <item android:title="Blue" android:titleCondensed="Blue" android:id="@+id/p_blue_id"></item>
             
-            <item android:titleCondensed="Cyan" android:title="Cyan" android:id="@+id/cyan_id"></item>
-            <item android:titleCondensed="Green" android:title="Green" android:id="@+id/green_id"></item>
-            <item android:titleCondensed="Magenta" android:title="Magenta" android:id="@+id/magenta_id"></item>
-            <item android:titleCondensed="Red" android:title="Red" android:id="@+id/red_id"></item>
+            <item android:id="@+id/p_lblue_id" android:titleCondensed="Light Blue" android:title="Light Blue"></item>
+            <item android:titleCondensed="Green" android:title="Green" android:id="@+id/p_green_id"></item>
+            <item android:titleCondensed="Pink" android:title="Pink" android:id="@+id/p_pink_id"></item>
+            <item android:titleCondensed="Red" android:title="Red" android:id="@+id/p_red_id"></item>
             
-        <item android:id="@+id/yellow_id" android:titleCondensed="Yellow" android:title="Yellow"></item><item android:titleCondensed="Random" android:id="@+id/random_id" android:title="Random"></item>
+        <item android:titleCondensed="Yellow" android:title="Yellow" android:id="@+id/p_yellow_id"></item><item android:titleCondensed="Black" android:title="Black" android:id="@+id/p_black_id"></item><item android:titleCondensed="Random" android:title="Random" android:id="@+id/p_random_id"></item>
+        
 </menu>
     	  android:title="@string/change_colour"</item>
+    <item android:id="@+id/change_background_id" android:titleCondensed="Background" android:title="Change Background">
+        <menu>
+            <item android:titleCondensed="White" android:title="White" android:id="@+id/b_white_id"></item>
+            <item android:titleCondensed="Blue" android:title="Blue" android:id="@+id/b_blue_id"></item>
+            <item android:titleCondensed="Cyan" android:title="Cyan" android:id="@+id/b_lblue_id"></item>
+            <item android:titleCondensed="Green" android:title="Green" android:id="@+id/b_green_id"></item>
+            <item android:titleCondensed="Pink" android:title="Pink" android:id="@+id/b_pink_id"></item>
+            <item android:titleCondensed="Red" android:title="Red" android:id="@+id/b_red_id"></item>
+            <item android:titleCondensed="Yellow" android:title="Yellow" android:id="@+id/b_yellow_id"></item>
+            <item android:titleCondensed="Black" android:title="Black" android:id="@+id/b_black_id"></item>
+        </menu>
+    </item>
 </menu>

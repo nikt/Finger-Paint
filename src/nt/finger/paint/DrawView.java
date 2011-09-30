@@ -31,11 +31,15 @@ public class DrawView extends View implements OnTouchListener {
 		paint.setAntiAlias(true);
 	}
 	
+	// used to clear the screen
 	public void clearPoints () {
 		points.clear();
+		// force View to redraw
+		// without this, points aren't cleared until next action
 		invalidate();
 	}
 	
+	// used to set drawing colour
 	public void changeColour (int col_in) {
 		col_mode = col_in;
 	}
@@ -73,6 +77,10 @@ public class DrawView extends View implements OnTouchListener {
 					paint.setColor(Color.YELLOW);
 					break;
 				}
+				case 7 : {
+					paint.setColor(Color.BLACK);
+					break;
+				}
 			}
 			
 			//paint.setColor(Color.CYAN);		// Color.WHITE
@@ -92,7 +100,7 @@ public class DrawView extends View implements OnTouchListener {
 			point.col = col_mode;
 		} else {
 			gen = new Random();
-			point.col = gen.nextInt( 7 );
+			point.col = gen.nextInt( 8 );
 		}
 		points.add(point);
 		invalidate();
