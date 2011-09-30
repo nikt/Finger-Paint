@@ -1,0 +1,17 @@
+Finger Paint
+
+nikt
+
+This is my first attempt at an Android app. I am working on this to learn both
+java and android. Finger Paint is a simple app that lets you draw on the
+screen with a finger.
+
+Currently Finger Paint is very basic. You can draw, switch colours to draw
+with, and clear the screen.
+
+Planned work:
+option to change background colours
+option to load a picture as background
+save screenshot
+smoother drawing
+multitouch (either zoom, drawing with more than one finger, etc)
