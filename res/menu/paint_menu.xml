@@ -20,7 +20,7 @@
         <menu>
             <item android:titleCondensed="White" android:title="White" android:id="@+id/b_white_id"></item>
             <item android:titleCondensed="Blue" android:title="Blue" android:id="@+id/b_blue_id"></item>
-            <item android:titleCondensed="Cyan" android:title="Cyan" android:id="@+id/b_lblue_id"></item>
+            <item android:id="@+id/b_lblue_id" android:titleCondensed="Light Blue" android:title="Light Blue"></item>
             <item android:titleCondensed="Green" android:title="Green" android:id="@+id/b_green_id"></item>
             <item android:titleCondensed="Pink" android:title="Pink" android:id="@+id/b_pink_id"></item>
             <item android:titleCondensed="Red" android:title="Red" android:id="@+id/b_red_id"></item>

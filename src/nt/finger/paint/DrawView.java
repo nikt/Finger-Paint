@@ -19,7 +19,7 @@ public class DrawView extends View implements OnTouchListener {
 	List<Point> points = new ArrayList<Point>();
 	Paint paint = new Paint();
 	Random gen;
-	int col_mode = 1;
+	int col_mode = 0;	// set default colour to white
 	
 	public DrawView(Context context) {
 		super(context);

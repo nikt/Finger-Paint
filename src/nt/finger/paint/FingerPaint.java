@@ -20,6 +20,9 @@ public class FingerPaint extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         
+        // lock screen orientation (stops screen clearing when rotating phone)
+        setRequestedOrientation(getResources().getConfiguration().orientation);
+        
         drawView = new DrawView(this);
         setContentView(drawView);
         drawView.setBackgroundColor(Color.BLACK);
