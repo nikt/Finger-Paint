@@ -16,6 +16,7 @@ public final class R {
     public static final class id {
         public static final int b_black_id=0x7f060013;
         public static final int b_blue_id=0x7f06000d;
+        public static final int b_custom_id=0x7f060014;
         public static final int b_green_id=0x7f06000f;
         public static final int b_lblue_id=0x7f06000e;
         public static final int b_pink_id=0x7f060010;

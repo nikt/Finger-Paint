@@ -1,6 +1,7 @@
 package nt.finger.paint;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
@@ -112,9 +113,19 @@ public class FingerPaint extends Activity {
     		drawView.setBackgroundColor(Color.BLACK);
     		return true;
     	}
+    	case R.id.b_custom_id : {
+    		setCustomBackground(drawView);
+    		return true;
+    	}
     	default : {
     		return true;
     	}
     	}
+    }
+    
+    void setCustomBackground(DrawView v) {
+    	// menu option for setting a custom background
+    	Intent intent = new Intent(this.getBaseContext(), FileChooser.class);
+    	this.startActivityForResult(intent, RESULT_OK);
     }
 }

@@ -26,6 +26,7 @@
             <item android:titleCondensed="Red" android:title="Red" android:id="@+id/b_red_id"></item>
             <item android:titleCondensed="Yellow" android:title="Yellow" android:id="@+id/b_yellow_id"></item>
             <item android:titleCondensed="Black" android:title="Black" android:id="@+id/b_black_id"></item>
+            <item android:titleCondensed="Picture..." android:title="Picture..." android:id="@+id/b_custom_id"></item>
         </menu>
     </item>
 </menu>
