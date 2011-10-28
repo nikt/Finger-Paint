@@ -125,7 +125,7 @@ public class FingerPaint extends Activity {
     
     void setCustomBackground(DrawView v) {
     	// menu option for setting a custom background
-    	Intent intent = new Intent(this.getBaseContext(), FileChooser.class);
-    	this.startActivityForResult(intent, RESULT_OK);
+//    	Intent intent = new Intent(this.getBaseContext(), FileChooser.class);
+//    	this.startActivityForResult(intent, RESULT_OK);
     }
 }
