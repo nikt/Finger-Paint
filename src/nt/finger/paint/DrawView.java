@@ -34,8 +34,13 @@ public class DrawView extends View implements OnTouchListener {
 	// used to clear the screen
 	public void clearPoints () {
 		points.clear();
-		// force View to redraw
-		// without this, points aren't cleared until next action
+		forceRedraw();
+	}
+	
+	/**
+	 * Force view to redraw. Without this points aren't cleared until next action
+	 */
+	public void forceRedraw() {
 		invalidate();
 	}
 	
@@ -49,7 +54,7 @@ public class DrawView extends View implements OnTouchListener {
 		// for each point, draw on canvas
 		for (Point point : points) {
 			point.draw(canvas, paint);
-			Log.d(TAG, "Painting: "+point);
+			Log.d(TAG, "pointcount: "+points.size());
 		}
 	}
 	
@@ -103,7 +108,7 @@ public class DrawView extends View implements OnTouchListener {
 			return false;
 		}
 		points.add(point);
-		invalidate();
+		forceRedraw();
 		Log.d(TAG, "point: " + point);
 		return true;
 	}
