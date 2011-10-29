@@ -3,7 +3,10 @@ package nt.finger.paint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -11,6 +14,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 public class FingerPaint extends Activity {
+	private static final String TAG = "FingerPaint";
 	DrawView drawView;
 	
     /** Called when the activity is first created. */
@@ -124,8 +128,42 @@ public class FingerPaint extends Activity {
     }
     
     void setCustomBackground(DrawView v) {
+    	Intent fileChooserIntent = new Intent();
+    	fileChooserIntent.addCategory(Intent.CATEGORY_OPENABLE);
+    	fileChooserIntent.setType("image/jpeg");
+    	fileChooserIntent.setAction(Intent.ACTION_GET_CONTENT);
+    	startActivityForResult(Intent.createChooser(fileChooserIntent, "/sdcard"), 1);
+    	/*
     	// menu option for setting a custom background
-//    	Intent intent = new Intent(this.getBaseContext(), FileChooser.class);
-//    	this.startActivityForResult(intent, RESULT_OK);
+    	String Url = "http://www.google.ca";	// http://www.google.ca
+    	Intent fileChooserIntent = new Intent(Intent.ACTION_CHOOSER, Uri.parse(Url));
+    	this.startActivity(fileChooserIntent);
+    	*/
     }
+    
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    	Uri resultUrl = data.getData();
+    	//String resultString = data.getData().toString();
+    	
+    	String drawString = resultUrl.getPath();
+    	Log.d(TAG, drawString);
+    	
+    	//File Manager: "content://org.openintents.cmfilemanager/mimetype//mnt/sdcard/DCIM/Camera/IMG_20110909_210412.jpg"
+    	//ASTRO:        "file:///mnt/sdcard/DCIM/Camera/IMG_20110924_133324.jpg"
+    	if (drawString.contains("//"))
+    	{
+    		drawString = drawString.substring(drawString.lastIndexOf("//"));
+    	}
+    	
+    	if (drawString.length() > 0)
+    	{
+    		Drawable drawBackground = Drawable.createFromPath(drawString);
+    		drawView.setBackgroundDrawable(drawBackground);
+    	}
+    	
+    	//drawView.setBackgroundDrawable(getWallpaper());
+        //filename_editText.setText(resultUrl.getPath());
+    }
+
 }
