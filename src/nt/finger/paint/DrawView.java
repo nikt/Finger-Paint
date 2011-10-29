@@ -97,8 +97,10 @@ public class DrawView extends View implements OnTouchListener {
 		Point point;
 		if(event.getAction() == MotionEvent.ACTION_MOVE) {
 			point = new FriendlyPoint(event.getX(), event.getY(), new_col, points.get(points.size() - 1));	
-		} else {	
+		} else if (event.getAction() == MotionEvent.ACTION_DOWN) {	
 			point = new Point(event.getX(), event.getY(), new_col);
+		} else {
+			return false;
 		}
 		points.add(point);
 		invalidate();
