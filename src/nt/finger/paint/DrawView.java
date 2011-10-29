@@ -48,59 +48,57 @@ public class DrawView extends View implements OnTouchListener {
 	public void onDraw(Canvas canvas) {
 		// for each point, draw on canvas
 		for (Point point : points) {
-			switch (point.col) {
-				case 0 : {
-					paint.setColor(Color.WHITE);
-					break;
-				}
-				case 1 : {
-					paint.setColor(Color.BLUE);
-					break;
-				}
-				case 2 : {
-					paint.setColor(Color.CYAN);
-					break;
-				}
-				case 3 : {
-					paint.setColor(Color.GREEN);
-					break;
-				}
-				case 4 : {
-					paint.setColor(Color.MAGENTA);
-					break;
-				}
-				case 5 : {
-					paint.setColor(Color.RED);
-					break;
-				}
-				case 6 : {
-					paint.setColor(Color.YELLOW);
-					break;
-				}
-				case 7 : {
-					paint.setColor(Color.BLACK);
-					break;
-				}
-			}
-			
-			//paint.setColor(Color.CYAN);		// Color.WHITE
-			
-			canvas.drawCircle(point.x, point.y, 5, paint);
-			// Log.d(TAG, "Painting: "+point;
+			point.draw(canvas, paint);
+			Log.d(TAG, "Painting: "+point);
 		}
 	}
 	
 	public boolean onTouch(View view, MotionEvent event) {
-		// if(event.getAction() != MotionEvent.ACTION_DOWN)
-		// return super.onTouchEvent(event);
-		Point point = new Point();
-		point.x = event.getX();
-		point.y = event.getY();
+		int new_col = 0;
 		if (col_mode >= 0) {
-			point.col = col_mode;
+			switch (col_mode) {
+				case 0 : {
+					new_col = Color.WHITE;
+					break;
+				}
+				case 1 : {
+					new_col = Color.BLUE;
+					break;
+				}
+				case 2 : {
+					new_col = Color.CYAN;
+					break;
+				}
+				case 3 : {
+					new_col = Color.GREEN;
+					break;
+				}
+				case 4 : {
+					new_col = Color.MAGENTA;
+					break;
+				}
+				case 5 : {
+					new_col = Color.RED;
+					break;
+				}
+				case 6 : {
+					new_col = Color.YELLOW;
+					break;
+				}
+				case 7 : {
+					new_col = Color.BLACK;
+					break;
+				}
+			}
 		} else {
 			gen = new Random();
-			point.col = gen.nextInt( 8 );
+			new_col = gen.nextInt( 8 );
+		}
+		Point point;
+		if(event.getAction() == MotionEvent.ACTION_MOVE) {
+			point = new FriendlyPoint(event.getX(), event.getY(), new_col, points.get(points.size() - 1));	
+		} else {	
+			point = new Point(event.getX(), event.getY(), new_col);
 		}
 		points.add(point);
 		invalidate();
