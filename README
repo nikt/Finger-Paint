@@ -11,10 +11,10 @@ Currently Finger Paint is very basic. You can:
 -switch paint colour
 -clear screen
 -switch background colour
+-set background image
 
 Planned work:
-option to load a picture as background
-brush size/shape
+brush size/shape (need to fix line width somehow)
 custom colour selection (RGB)
 save screenshot (might not be currently possible - requires root?)
 smoother drawing

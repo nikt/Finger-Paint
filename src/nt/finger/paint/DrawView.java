@@ -19,10 +19,14 @@ public class DrawView extends View implements OnTouchListener {
 	List<Point> points = new ArrayList<Point>();
 	Paint paint = new Paint();
 	Random gen;
-	int col_mode = 0;	// set default colour to white
+	int col_mode;
 	
 	public DrawView(Context context) {
 		super(context);
+		
+		// set default colour to white
+		col_mode = 0;
+		
 		setFocusable(true);
 		setFocusableInTouchMode(true);
 		

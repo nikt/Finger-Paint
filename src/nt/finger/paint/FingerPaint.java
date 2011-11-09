@@ -132,7 +132,7 @@ public class FingerPaint extends Activity {
     void setCustomBackground(DrawView v) {
     	Intent fileChooserIntent = new Intent();
     	fileChooserIntent.addCategory(Intent.CATEGORY_OPENABLE);
-    	fileChooserIntent.setType("image/jpeg");
+    	fileChooserIntent.setType("image/*");
     	fileChooserIntent.setAction(Intent.ACTION_GET_CONTENT);
     	startActivityForResult(Intent.createChooser(fileChooserIntent, "Select Picture"), 1);
     	/*
