@@ -2,10 +2,12 @@ package nt.finger.paint;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -132,7 +134,7 @@ public class FingerPaint extends Activity {
     	fileChooserIntent.addCategory(Intent.CATEGORY_OPENABLE);
     	fileChooserIntent.setType("image/jpeg");
     	fileChooserIntent.setAction(Intent.ACTION_GET_CONTENT);
-    	startActivityForResult(Intent.createChooser(fileChooserIntent, "/sdcard"), 1);
+    	startActivityForResult(Intent.createChooser(fileChooserIntent, "Select Picture"), 1);
     	/*
     	// menu option for setting a custom background
     	String Url = "http://www.google.ca";	// http://www.google.ca
@@ -143,27 +145,57 @@ public class FingerPaint extends Activity {
     
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    	Uri resultUrl = data.getData();
-    	//String resultString = data.getData().toString();
-    	
-    	String drawString = resultUrl.getPath();
-    	Log.d(TAG, drawString);
-    	
-    	//File Manager: "content://org.openintents.cmfilemanager/mimetype//mnt/sdcard/DCIM/Camera/IMG_20110909_210412.jpg"
-    	//ASTRO:        "file:///mnt/sdcard/DCIM/Camera/IMG_20110924_133324.jpg"
-    	if (drawString.contains("//"))
+    	// if statement prevents force close error when picture isn't selected
+    	if (resultCode == RESULT_OK)
     	{
-    		drawString = drawString.substring(drawString.lastIndexOf("//"));
+	    	Uri resultUri = data.getData();
+	    	//String resultString = data.getData().toString();
+	    	
+	    	String drawString = resultUri.getPath();
+	    	String galleryString = getGalleryPath(resultUri);
+	    	
+	    	// if Gallery app was used
+	    	if (galleryString != null)
+	    	{
+	    		Log.d(TAG, galleryString);
+	    		drawString = galleryString;
+	    	}
+	    	// else another file manager was used
+	    	else
+	    	{
+	    		Log.d(TAG, drawString);
+		    	//File Manager: "content://org.openintents.cmfilemanager/mimetype//mnt/sdcard/DCIM/Camera/IMG_20110909_210412.jpg"
+		    	//ASTRO:        "file:///mnt/sdcard/DCIM/Camera/IMG_20110924_133324.jpg"
+		    	if (drawString.contains("//"))
+		    	{
+		    		drawString = drawString.substring(drawString.lastIndexOf("//"));
+		    	}
+	    	}
+	    	
+	    	// set the background to the selected picture
+	    	if (drawString.length() > 0)
+	    	{
+	    		Drawable drawBackground = Drawable.createFromPath(drawString);
+	    		drawView.setBackgroundDrawable(drawBackground);
+	    	}
+	    	
+    	}
+    }
+    
+    // used when trying to get an image path from the URI returned by the Gallery app
+    public String getGalleryPath(Uri uri) {
+    	String[] projection = { MediaStore.Images.Media.DATA };
+    	Cursor cursor = managedQuery(uri, projection, null, null, null);
+    	
+    	if (cursor != null)
+    	{
+    		int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+    		cursor.moveToFirst();
+    		return cursor.getString(column_index);
     	}
     	
-    	if (drawString.length() > 0)
-    	{
-    		Drawable drawBackground = Drawable.createFromPath(drawString);
-    		drawView.setBackgroundDrawable(drawBackground);
-    	}
     	
-    	//drawView.setBackgroundDrawable(getWallpaper());
-        //filename_editText.setText(resultUrl.getPath());
+    	return null;
     }
 
 }
