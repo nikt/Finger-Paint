@@ -17,6 +17,10 @@ public class FriendlyPoint extends Point {
 		paint.setColor(col);
 		paint.setStrokeWidth(width);
 		canvas.drawLine(x, y, neighbour.x, neighbour.y, paint);
+		// experimenting with smoother drawing --
+		// the circle should hopefully act as a smoothing hinge between line segments
+		// o----o----o------o
+		canvas.drawCircle(x, y, width/2, paint);
 	}
 	
 	@Override
