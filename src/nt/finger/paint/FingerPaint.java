@@ -123,6 +123,26 @@ public class FingerPaint extends Activity {
     		setCustomBackground(drawView);
     		return true;
     	}
+    	case R.id.w_xsmall : {
+    		drawView.changeWidth(0);
+    		return true;
+    	}
+    	case R.id.w_small : {
+    		drawView.changeWidth(5);
+    		return true;
+    	}
+    	case R.id.w_medium : {
+    		drawView.changeWidth(10);
+    		return true;
+    	}
+    	case R.id.w_large : {
+    		drawView.changeWidth(15);
+    		return true;
+    	}
+    	case R.id.w_xlarge : {
+    		drawView.changeWidth(20);
+    		return true;
+    	}
     	default : {
     		return true;
     	}

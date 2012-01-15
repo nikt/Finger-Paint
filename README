@@ -9,16 +9,18 @@ screen with a finger.
 Currently Finger Paint is very basic. You can:
 -draw!
 -switch paint colour
+-switch line width
 -clear screen
 -switch background colour
 -set background image
 
 Planned work:
-brush size/shape (need to fix line width somehow)
 custom colour selection (RGB)
 save screenshot (might not be currently possible - requires root?)
 smoother drawing
 multitouch (either zoom, drawing with more than one finger, etc)
+
+----
 
 justin is apart of this now YEEEE MICHAEL BROOKS
 

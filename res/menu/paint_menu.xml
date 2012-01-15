@@ -29,4 +29,13 @@
             <item android:titleCondensed="Picture..." android:title="Picture..." android:id="@+id/b_custom_id"></item>
         </menu>
     </item>
+    <item android:id="@+id/change_width_id" android:title="Change Width" android:titleCondensed="Width">
+        <menu>
+            <item android:titleCondensed="XS" android:id="@+id/w_xsmall" android:title="Extra Small"></item><item android:id="@+id/w_small" android:title="Small" android:titleCondensed="S"></item>
+            <item android:id="@+id/w_medium" android:title="Medium" android:titleCondensed="M"></item>
+            <item android:titleCondensed="L" android:id="@+id/w_large" android:title="Large"></item>
+            <item android:titleCondensed="XL" android:id="@+id/w_xlarge" android:title="Extra Large"></item>
+            
+        </menu>
+    </item>
 </menu>

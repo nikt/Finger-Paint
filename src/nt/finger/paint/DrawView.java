@@ -20,12 +20,16 @@ public class DrawView extends View implements OnTouchListener {
 	Paint paint = new Paint();
 	Random gen;
 	int col_mode;
+	int wid_mode;
 	
 	public DrawView(Context context) {
 		super(context);
 		
 		// set default colour to white
 		col_mode = 0;
+		
+		// set default width to 7px
+		wid_mode = 10;
 		
 		setFocusable(true);
 		setFocusableInTouchMode(true);
@@ -52,13 +56,18 @@ public class DrawView extends View implements OnTouchListener {
 	public void changeColour (int col_in) {
 		col_mode = col_in;
 	}
+
+	// used to set drawing width
+	public void changeWidth (int wid_in) {
+		wid_mode = wid_in;
+	}
 	
 	@Override
 	public void onDraw(Canvas canvas) {
 		// for each point, draw on canvas
 		for (Point point : points) {
 			point.draw(canvas, paint);
-			Log.d(TAG, "pointcount: "+points.size());
+			Log.d(TAG, "pointcount: " + points.size());
 		}
 	}
 	
@@ -105,9 +114,9 @@ public class DrawView extends View implements OnTouchListener {
 		}
 		Point point;
 		if(event.getAction() == MotionEvent.ACTION_MOVE) {
-			point = new FriendlyPoint(event.getX(), event.getY(), new_col, points.get(points.size() - 1));	
+			point = new FriendlyPoint(event.getX(), event.getY(), new_col, points.get(points.size() - 1), wid_mode);	
 		} else if (event.getAction() == MotionEvent.ACTION_DOWN) {	
-			point = new Point(event.getX(), event.getY(), new_col);
+			point = new Point(event.getX(), event.getY(), new_col, wid_mode);
 		} else {
 			return false;
 		}
