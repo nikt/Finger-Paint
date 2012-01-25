@@ -73,6 +73,11 @@ public class DrawView extends View implements OnTouchListener {
 	
 	public boolean onTouch(View view, MotionEvent event) {
 		int new_col = 0;
+		if (col_mode < 0) {
+			gen = new Random();
+			col_mode = gen.nextInt( 8 );
+		}
+		// This if statement may be redundant now
 		if (col_mode >= 0) {
 			switch (col_mode) {
 				case 0 : {
@@ -108,10 +113,11 @@ public class DrawView extends View implements OnTouchListener {
 					break;
 				}
 			}
-		} else {
+		}
+		/* else {
 			gen = new Random();
 			new_col = gen.nextInt( 8 );
-		}
+		} */
 		Point point;
 		if(event.getAction() == MotionEvent.ACTION_MOVE) {
 			point = new FriendlyPoint(event.getX(), event.getY(), new_col, points.get(points.size() - 1), wid_mode);	
